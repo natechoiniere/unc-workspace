@@ -3,6 +3,6 @@
 __author__ = "730443739"
 
 name: str = input("Enter your name: ")
-print( name + ", you're doing great!")
+print(name + " you're doing great!")
 print("Hey there " + name + ", you got this!")
 print("You can do anything you set your mind to, " + name + ".")

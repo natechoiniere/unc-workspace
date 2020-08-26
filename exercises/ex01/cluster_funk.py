@@ -1,4 +1,4 @@
-"""This program evaluates the rate of change in infection cluster size given an initial infected population, as well as a value for the contagiousness of the disease."""
+"""This program models exponential growth of an infectious disease."""
 
 __author__ = "730443739"
 

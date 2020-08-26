@@ -1,10 +1,9 @@
-"""This program evaluates the rate of change in infection cluster size given an initial infected population,
-as well as a value for the contagiousness of the disease."""
+"""This program evaluates the rate of change in infection cluster size given an initial infected population, as well as a value for the contagiousness of the disease."""
 
 __author__ = "730443739"
 
-contagionIndex: str = input("Enter R0: ") # R0, as a string
-initPop: str = input("Enter t0 Cluster Size: ") # Population of infected
+contagionIndex: str = input("Enter R0: ")  # R0, as a string
+initPop: str = input("Enter t0 Cluster Size: ")  # Population of infected
 
 newCaseNum1: float = float(initPop) * float(contagionIndex)
 totalCaseNum1: float = newCaseNum1 + float(initPop)

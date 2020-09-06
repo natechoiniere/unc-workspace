@@ -54,7 +54,7 @@ def encode_str(string: str) -> str:
     
 
 def decode_str(string: str) -> str:
-    """This function encodes a 4-letter string by a shift value of 1."""
+    """This function decodes a single-length string by a shift value of 1."""
     i: int = 0
     decoded_str: str = ""
     while i < len(string):

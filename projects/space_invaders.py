@@ -1,5 +1,5 @@
-#Space Invaders - Part 3
-#Set up the screen
+#Space Invaders - Part 5
+#Enemy and Player
 import turtle
 import os
 
@@ -68,12 +68,40 @@ def move_down():
         y = -280
     player.sety(y)
 
+#Player fires bullet with spacebar
+bullet = turtle.Turtle()
+bullet.color("yellow")
+bullet.shape("triangle")
+bullet.penup()
+bullet.speed(0)
+bullet.setheading(90)
+bullet.shapesize(0.5, 0.5)
+bullet.hideturtle()
+
+bulletspeed = 20
+#Define bullet states (ready, ready to fire; firing, bullet is firing)
+bulletstate = "ready"
+
+def fire_bullet():
+    #Declare bulletstate as a global if it needs to be changed
+    global bulletstate
+
+    if bulletstate == "ready":
+        bulletstate = "fire"
+        bullet.showturtle()
+        x = player.xcor()
+        y = player.ycor()
+        bullet.setposition(x, y + 10)
+        
+        
+
 #Create keyboard bindings
 turtle.listen()
 turtle.onkeypress(move_left, "Left")
 turtle.onkeypress(move_right, "Right")
 turtle.onkeypress(move_up, "Up")
 turtle.onkeypress(move_down, "Down")
+turtle.onkeypress(fire_bullet, "space")
 
 #Main game loop
 while True:
@@ -96,4 +124,15 @@ while True:
         enemyspeed *= -1
         enemy.sety(y)
 
+    #Moving the bullet
+    if bulletstate == "fire":
+        y = bullet.ycor()
+        y += bulletspeed
+        bullet.sety(y)
+
+    #Prevent bullet from passing the top wall
+    if bullet.ycor() > 280:
+        bullet.hideturtle()
+        bulletstate = "ready"
+        
 delay = input("Press enter to finish.")

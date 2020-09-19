@@ -1,4 +1,4 @@
-"""Responses for Quiz 00."""
+"""Redoing some QZ00 problems."""
 
 
 __author__ = "730443739"
@@ -6,7 +6,9 @@ __author__ = "730443739"
 
 def is_tar(string: str) -> bool:
     """This method returns true if the string begins with t and ends with r."""
-    if (string[0] == "t") and  (string[len(string) - 1] == "r"):
+    if string == "":
+        return False
+    elif (string[0] == "t") and (string[len(string) - 1] == "r"):
         return True
     else:
         return False
@@ -28,8 +30,6 @@ def sum_inputs() -> str:
     """This method sums the given inputs."""
     num: int = int(input("Enter an int, -1 to sum: "))
     tally: int = num
-    
-
     while num != -1:
         num = int(input("Enter an int, -1 to sum: "))
         tally += num
@@ -37,19 +37,17 @@ def sum_inputs() -> str:
     return ans
 
 
-def strip (string: str, side: str) -> str:
+def strip(string: str, side: str) -> str:
     """This function strips the string on either the left or right side."""
     if (side == "left" or "right"):
         if(side == "left"):
-            i: int = 0
+            i = 0
             stripped_str: str = ""
             while i < len(string):
                 if string[i] != " ":
                     stripped_str += string[i]
                 i = i + 1
             return stripped_str
-
-
         if(side == "right"):
             i = 0
             stripped_str = ""
@@ -58,8 +56,6 @@ def strip (string: str, side: str) -> str:
                     stripped_str += string[i]
                 i = i + 1
             return stripped_str
-    return string
-
-
     else:
         print("Select either left or right for your side.")
+    return string

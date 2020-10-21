@@ -13,9 +13,10 @@ for row in csv_reader:
     table.append(float_row)
     print(float_row)
 
+
 high_sum: float = 0.0
 for row in table:
     high_sum += row["high"]
 print("High temp average: " + str(high_sum / len(table)))
-
+print(table[3]['high'])
 file_handle.close()

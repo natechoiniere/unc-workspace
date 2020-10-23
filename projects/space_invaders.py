@@ -1,14 +1,15 @@
-#Space Invaders - Part 5
-#Enemy and Player
+# Enemy and Player
 import turtle
 import os
 
-#Set up the screen
+
+# Set up the screen
 wn = turtle.Screen()
 wn.bgcolor("black")
 wn.title("Space Invaders!")
 
-#Draw border
+
+# Draw border
 border_pen = turtle.Turtle()
 border_pen.speed(0)
 border_pen.color("white")
@@ -22,7 +23,8 @@ for side in range(4):
     border_pen.lt(90)
 border_pen.hideturtle()
 
-#Create player turtle
+
+# Create player turtle
 player = turtle.Turtle()
 player.speed(0)
 player.setheading(90)
@@ -30,19 +32,20 @@ player.color("blue")
 player.shape("triangle")
 player.penup()
 player.setposition(0, -250)
-
 playerspeed = 15
-enemyspeed = 2
 
-#Create the enemy
+
+
+# Create the enemy
 enemy = turtle.Turtle()
 enemy.color("red")
 enemy.shape("circle")
 enemy.penup()
 enemy.speed(0)
 enemy.setposition(-200, 250)
+enemyspeed = 2
 
-#Move the player left and right
+# Move the player left and right
 def move_left():
     x = player.xcor()
     x -= playerspeed
@@ -68,7 +71,8 @@ def move_down():
         y = -280
     player.sety(y)
 
-#Player fires bullet with spacebar
+
+# Player fires bullet with spacebar
 bullet = turtle.Turtle()
 bullet.color("yellow")
 bullet.shape("triangle")
@@ -77,15 +81,15 @@ bullet.speed(0)
 bullet.setheading(90)
 bullet.shapesize(0.5, 0.5)
 bullet.hideturtle()
-
 bulletspeed = 20
-#Define bullet states (ready, ready to fire; firing, bullet is firing)
+
+
+# Define bullet states (ready, ready to fire; firing, bullet is firing)
 bulletstate = "ready"
 
 def fire_bullet():
-    #Declare bulletstate as a global if it needs to be changed
+    # Declare bulletstate as a global if it needs to be changed
     global bulletstate
-
     if bulletstate == "ready":
         bulletstate = "fire"
         bullet.showturtle()
@@ -93,9 +97,8 @@ def fire_bullet():
         y = player.ycor()
         bullet.setposition(x, y + 10)
         
-        
 
-#Create keyboard bindings
+# Create keyboard bindings
 turtle.listen()
 turtle.onkeypress(move_left, "Left")
 turtle.onkeypress(move_right, "Right")
@@ -103,15 +106,16 @@ turtle.onkeypress(move_up, "Up")
 turtle.onkeypress(move_down, "Down")
 turtle.onkeypress(fire_bullet, "space")
 
-#Main game loop
+
+# Main game loop
 while True:
 
-    #Move the enemy
+    # Move the enemy
     x = enemy.xcor()
     x += enemyspeed
     enemy.setx(x)
 
-    #Prevent enemies from going past walls
+    # Prevent enemies from going past walls
     if enemy.xcor() > 280:
         y = enemy.ycor()
         y -= 40
@@ -124,13 +128,13 @@ while True:
         enemyspeed *= -1
         enemy.sety(y)
 
-    #Moving the bullet
+    # Moving the bullet
     if bulletstate == "fire":
         y = bullet.ycor()
         y += bulletspeed
         bullet.sety(y)
 
-    #Prevent bullet from passing the top wall
+    # Prevent bullet from passing the top wall
     if bullet.ycor() > 280:
         bullet.hideturtle()
         bulletstate = "ready"

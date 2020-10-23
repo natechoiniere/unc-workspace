@@ -37,14 +37,14 @@ def list() -> List[float]:  # Column is just the top row, row[column] is the ind
     for i in row_list:
         for j in i:
             if j == sys.argv[2]:
-                float_list.append(float(i[j]))
+                try:
+                    float_list.append(float(i[j]))
+                except ValueError:
+                    ...
     if len(float_list) == 0:
         print(f"Invalid column: {sys.argv[2]}")
         exit()
-    if sys.argv[2] == "DailyPrecipitation":
-        print("[0.0, 0.0, 0.0, 0.0, 0.0, 0.0]")  # Autograder wasn't getting the correct outputs for DailyPrecipitation,
-    else:                                        # but I do when I run it myself. I think it's an error with the autograder.
-        print(float_list)
+    print(float_list)
     file_handle.close()
     return float_list
 
@@ -63,15 +63,15 @@ def min() -> float:
     for i in row_list:
         for j in i:
             if j == sys.argv[2]:
-                float_list.append(float(i[j]))
+                try:
+                    float_list.append(float(i[j]))
+                except ValueError:
+                    ...
     if len(float_list) == 0:
         print(f"Invalid column: {sys.argv[2]}")
         exit()          
-    min_value = builtins.min(float_list)    # builtins.min() prevents Python from using the local function "min" which 
-    if sys.argv[2] == "DailyPrecipitation":  # doesn't take any arguments.
-        print(0.0)
-    else:                                        
-        print(min_value)                      
+    min_value = builtins.min(float_list)  # builtins.min() prevents Python from using the local function "min" which                          
+    print(min_value)                      # doesn't take any arguments
     file_handle.close()
     return min_value
     
@@ -90,15 +90,15 @@ def max() -> float:
     for i in row_list:
         for j in i:
             if j == sys.argv[2]:
-                float_list.append(float(i[j]))
+                try:
+                    float_list.append(float(i[j]))
+                except ValueError:
+                    ...
     if len(float_list) == 0:
         print(f"Invalid column: {sys.argv[2]}")
         exit() 
-    max_value = builtins.max(float_list)
-    if sys.argv[2] == "DailyPrecipitation":
-        print(0.0)
-    else:   
-        print(max_value)
+    max_value = builtins.max(float_list) 
+    print(max_value)
     file_handle.close()
     return max_value
 
@@ -117,15 +117,15 @@ def avg() -> float:
     for i in row_list:
         for j in i:
             if j == sys.argv[2]:
-                float_list.append(float(i[j]))
+                try:
+                    float_list.append(float(i[j]))
+                except ValueError:
+                    ...
     if len(float_list) == 0:
         print(f"Invalid column: {sys.argv[2]}")
         exit() 
     avg_value = builtins.sum(float_list) / len(float_list)
-    if sys.argv[2] == "DailyPrecipitation":  # Again, there's an error with the autograder for some reason. If you run
-        print(0.0)                           # my program from the CLI you'll get the correct output.
-    else:   
-        print(avg_value)
+    print(avg_value)
     file_handle.close()
     return avg_value
 

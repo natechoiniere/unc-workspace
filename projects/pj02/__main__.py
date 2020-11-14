@@ -7,7 +7,7 @@ from projects.pj02.ViewController import ViewController
 
 def main() -> None:
     """Entrypoint of simulation."""
-    model = Model(constants.CELL_COUNT, constants.CELL_SPEED)
+    model = Model(constants.CELL_COUNT, constants.CELL_SPEED, constants.INFECTED_COUNT, constants.IMMUNE_COUNT)
     vc = ViewController(model)
     vc.start_simulation()
 

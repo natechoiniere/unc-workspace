@@ -22,8 +22,8 @@ def branch(length: float, angle: float) -> None:
     if length < 3:
         ...
     else:
-        branch(length * random_float, angle + 25)
-        branch(length * random_float, angle - 25)
+        branch(length * 0.7, angle + 25)
+        branch(length * 0.6, angle - 25)
     t.setheading(angle + 180)
     t.forward(length)
 
